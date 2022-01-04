@@ -1,5 +1,5 @@
 <template>
-  <label v-if="label">{{ label }}</label>
+  <label v-if="label" :class="labelClass">{{ label }}</label>
   <select
     class="field"
     :value="modelValue"
@@ -10,15 +10,17 @@
       },
     }"
   >
-    <option
-      v-for="option in options"
-      :value="option"
-      :key="option"
-      :selected="option === modelValue"
-    >
+    <option value="" selected disabled>Please select one</option>
+    <!-- :selected="option === modelValue" -->
+
+    <option v-for="option in options" :value="option" :key="option">
       {{ option }}
     </option>
   </select>
+
+  <p v-if="error" class="validation-error" aria-live="assertive">
+    {{ error }}
+  </p>
 </template>
 
 <script>
@@ -32,9 +34,17 @@ export default {
       type: [String, Number],
       default: '',
     },
+    labelClass: {
+      type: String,
+      default: '',
+    },
     options: {
       type: Array,
       required: true,
+    },
+    error: {
+      type: String,
+      default: '',
     },
   },
 };

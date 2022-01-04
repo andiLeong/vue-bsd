@@ -168,9 +168,9 @@ const store = useStore();
 const routes = ref([
   { name: 'home' },
   { name: 'login' },
-  { name: 'posts' },
+  { name: 'register' },
   // { name: 'post.create' },
-  { name: 'gallery' },
+  // { name: 'gallery' },
   // { name: 'uploader' },
 ]);
 
