@@ -25,56 +25,62 @@ const routes = [
     component: () => import('@/views/Register.vue'),
   },
 
+  {
+    path: '/tracking/create',
+    name: 'tracking.create',
+    component: () => import('@/views/tracking/create.vue'),
+  },
+
 
   {
     path: '/logout',
     name: 'logout',
     component: () => import('@/views/Logout.vue'),
   },
-  {
-    path: '/posts',
-    name: 'posts',
-    component: () => import('@/views/Posts.vue'),
-  },
-  {
-    path: '/posts/:slug',
-    name: 'posts.show',
-    component: () => import('@/views/Post.vue'),
-    props: true,
-  },
-  {
-    path: '/posts/edit/:slug',
-    name: 'posts.edit',
-    component: () => import('@/views/post/Edit.vue'),
-    props: true,
-    meta: { adminOnly: true },
-  },
-  {
-    path: '/posts/create',
-    name: 'post.create',
-    component: () => import('@/views/post/Create.vue'),
-    meta: { adminOnly: true },
-  },
-  {
-    path: '/form',
-    name: 'form',
-    component: () => import('@/views/SimpleForm.vue'),
-  },
-  {
-    path: '/tabs',
-    name: 'tabs',
-    component: () => import('@/views/Tabs.vue'),
-  },
-  {
-    path: '/uploader',
-    name: 'uploader',
-    component: () => import('@/views/Uploader.vue'),
-  },
-  {
-    path: '/gallery',
-    name: 'gallery',
-    component: () => import('@/views/Gallery.vue'),
-  },
+  // {
+  //   path: '/posts',
+  //   name: 'posts',
+  //   component: () => import('@/views/Posts.vue'),
+  // },
+  // {
+  //   path: '/posts/:slug',
+  //   name: 'posts.show',
+  //   component: () => import('@/views/Post.vue'),
+  //   props: true,
+  // },
+  // {
+  //   path: '/posts/edit/:slug',
+  //   name: 'posts.edit',
+  //   component: () => import('@/views/post/Edit.vue'),
+  //   props: true,
+  //   meta: { adminOnly: true },
+  // },
+  // {
+  //   path: '/posts/create',
+  //   name: 'post.create',
+  //   component: () => import('@/views/post/Create.vue'),
+  //   meta: { adminOnly: true },
+  // },
+  // {
+  //   path: '/form',
+  //   name: 'form',
+  //   component: () => import('@/views/SimpleForm.vue'),
+  // },
+  // {
+  //   path: '/tabs',
+  //   name: 'tabs',
+  //   component: () => import('@/views/Tabs.vue'),
+  // },
+  // {
+  //   path: '/uploader',
+  //   name: 'uploader',
+  //   component: () => import('@/views/Uploader.vue'),
+  // },
+  // {
+  //   path: '/gallery',
+  //   name: 'gallery',
+  //   component: () => import('@/views/Gallery.vue'),
+  // },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
