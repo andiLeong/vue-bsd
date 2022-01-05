@@ -14,7 +14,10 @@
 </template>
 
 <script>
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
+
 export default {
+  components: { LoadingIndicator },
   props: {
     isLoading: {
       type: Boolean,

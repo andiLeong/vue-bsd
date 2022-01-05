@@ -103,20 +103,6 @@
 
             <div class="pt-5">
               <div class="flex justify-end">
-                <!-- <button
-                  type="submit"
-                  :disabled="isLoading"
-                  :class="{ 'cursor-not-allowed ': isLoading }"
-                  class="w-full primary-btn"
-                >
-                  <LoadingIndicator
-                    v-if="isLoading"
-                    class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  />
-
-                  {{ isLoading ? 'Registering' : 'Register' }}
-                </button> -->
-
                 <PrimaryButton :isLoading="isLoading" class="w-full">
                   {{ isLoading ? 'Registering' : 'Register' }}
                 </PrimaryButton>
@@ -155,7 +141,6 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import BaseInput from '@/components/forms/BaseInput.vue';
 import BaseSelect from '@/components/forms/BaseSelect.vue';
-import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 
 const locations = ref(['OT', 'EM', 'WM', 'SG']);
