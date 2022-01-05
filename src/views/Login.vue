@@ -10,9 +10,9 @@
           <form class="space-y-6" @submit.prevent="submit">
             <div>
               <BaseInput
-                labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                labelClass="base-label"
                 placeHolder="abc@abc.com"
-                class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                class="mt-1 base-input"
                 label="Email"
                 type="email"
                 v-model="email"
@@ -22,9 +22,9 @@
 
             <div>
               <BaseInput
-                labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                labelClass="base-label"
                 placeHolder="Your strong password"
-                class="mt-1 ppearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                class="mt-1 base-input"
                 label="Password"
                 type="password"
                 v-model="password"
@@ -33,19 +33,9 @@
             </div>
 
             <div>
-              <button
-                type="submit"
-                :disabled="isLoading"
-                :class="{ 'cursor-not-allowed ': isLoading }"
-                class="w-full primary-btn"
-              >
-                <LoadingIndicator
-                  v-if="isLoading"
-                  class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                />
-
+              <PrimaryButton :isLoading="isLoading" class="w-full">
                 {{ isLoading ? 'Signing In' : 'Sign In' }}
-              </button>
+              </PrimaryButton>
             </div>
 
             <div class="text-red-500 text-sm italic font-medium">
@@ -65,7 +55,7 @@ import { object, string, number, boolean } from 'yup';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import BaseInput from '@/components/forms/BaseInput.vue';
-import LoadingIndicator from '@/components/LoadingIndicator.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 
 const validationSchema = ref(
   object({

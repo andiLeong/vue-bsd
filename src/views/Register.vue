@@ -28,9 +28,9 @@
                 >
                   <div class="sm:col-span-3">
                     <BaseInput
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                      labelClass="base-input"
                       placeHolder="John Doe"
-                      class="mt-1 mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      class="mt-1 base-input"
                       label="Name"
                       type="name"
                       v-model="name"
@@ -40,9 +40,9 @@
 
                   <div class="sm:col-span-3">
                     <BaseInput
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                      labelClass="base-input"
                       placeHolder="xxxxxxxxxx"
-                      class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      class="mt-1 base-input"
                       label="Phone"
                       type="text"
                       v-model="phone"
@@ -52,9 +52,9 @@
 
                   <div class="sm:col-span-6">
                     <BaseInput
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                      labelClass="base-input"
                       placeHolder="Your strong password"
-                      class="mt-1 ppearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      class="mt-1 base-input"
                       label="Password"
                       type="password"
                       v-model="password"
@@ -64,9 +64,9 @@
 
                   <div class="sm:col-span-6">
                     <BaseInput
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
+                      labelClass="base-input"
                       placeHolder="XXXX street , XXX city"
-                      class="mt-1 ppearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      class="mt-1 base-input"
                       label="Address"
                       type="text"
                       v-model="street"
@@ -76,8 +76,8 @@
 
                   <div class="sm:col-span-3">
                     <BaseSelect
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
-                      class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      labelClass="base-input"
+                      class="mt-1 base-input"
                       label="Location"
                       :options="locations"
                       modelValue=""
@@ -88,8 +88,8 @@
 
                   <div class="sm:col-span-3">
                     <BaseSelect
-                      labelClass="block text-sm font-medium text-gray-700 dark:text-white"
-                      class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                      labelClass="base-input"
+                      class="mt-1 base-input"
                       label="Options"
                       :options="options"
                       modelValue=""
