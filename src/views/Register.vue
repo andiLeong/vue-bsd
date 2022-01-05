@@ -28,7 +28,7 @@
                 >
                   <div class="sm:col-span-3">
                     <BaseInput
-                      labelClass="base-input"
+                      labelClass="base-label"
                       placeHolder="John Doe"
                       class="mt-1 base-input"
                       label="Name"
@@ -40,7 +40,7 @@
 
                   <div class="sm:col-span-3">
                     <BaseInput
-                      labelClass="base-input"
+                      labelClass="base-label"
                       placeHolder="xxxxxxxxxx"
                       class="mt-1 base-input"
                       label="Phone"
@@ -52,7 +52,7 @@
 
                   <div class="sm:col-span-6">
                     <BaseInput
-                      labelClass="base-input"
+                      labelClass="base-label"
                       placeHolder="Your strong password"
                       class="mt-1 base-input"
                       label="Password"
@@ -64,7 +64,7 @@
 
                   <div class="sm:col-span-6">
                     <BaseInput
-                      labelClass="base-input"
+                      labelClass="base-label"
                       placeHolder="XXXX street , XXX city"
                       class="mt-1 base-input"
                       label="Address"
@@ -76,7 +76,7 @@
 
                   <div class="sm:col-span-3">
                     <BaseSelect
-                      labelClass="base-input"
+                      labelClass="base-label"
                       class="mt-1 base-input"
                       label="Location"
                       :options="locations"
@@ -88,7 +88,7 @@
 
                   <div class="sm:col-span-3">
                     <BaseSelect
-                      labelClass="base-input"
+                      labelClass="base-label"
                       class="mt-1 base-input"
                       label="Options"
                       :options="options"

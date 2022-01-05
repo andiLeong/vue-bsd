@@ -160,23 +160,22 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline';
 import TheMobileNavigation from '@/components/TheMobileNavigation.vue';
 import { ref, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import axios from 'axios';
 
 const emit = defineEmits(['change']);
 
 const store = useStore();
 const routes = ref([
   { name: 'home' },
+  { name: 'about' },
   { name: 'login' },
   { name: 'register' },
-  // { name: 'post.create' },
   // { name: 'gallery' },
   // { name: 'uploader' },
 ]);
 
 const dropdowns = ref([
-  { path: '/uploader', name: 'Upload Gallery' },
-  { path: '/posts/create', name: 'Create Post' },
+  { path: '/profile', name: 'Profile' },
+  { path: '/posts/create', name: 'create Tracking' },
 ]);
 
 const chosenTheme = ref(store.state.theme);
@@ -192,7 +191,7 @@ console.log(authenticated.value);
 
 function logout() {
   axios
-    .post(`/logout`)
+    .post(`/api/logout`, { source: 'api' })
     .then((response) => {
       console.log(response);
       store.dispatch('logout');

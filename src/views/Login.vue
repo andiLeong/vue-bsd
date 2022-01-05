@@ -11,12 +11,12 @@
             <div>
               <BaseInput
                 labelClass="base-label"
-                placeHolder="abc@abc.com"
+                placeHolder="your user name"
                 class="mt-1 base-input"
-                label="Email"
-                type="email"
-                v-model="email"
-                :error="errors.email"
+                label="Username"
+                type="text"
+                v-model="username"
+                :error="errors.username"
               />
             </div>
 
@@ -59,7 +59,7 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 
 const validationSchema = ref(
   object({
-    email: string().required().email(),
+    username: string().required(),
     password: string().required().min(3),
   })
 );
@@ -68,7 +68,7 @@ const { handleSubmit, errors } = useForm({
   validationSchema,
 });
 
-const { value: email } = useField('email');
+const { value: username } = useField('username');
 const { value: password } = useField('password');
 
 const isLoading = ref(false);
@@ -76,7 +76,7 @@ const loginError = ref('');
 
 const submit = ref(
   handleSubmit((values) => {
-    // login(values);
+    login(values);
     console.log('submit', values);
   })
 );
@@ -84,19 +84,30 @@ const submit = ref(
 const store = useStore();
 const router = useRouter();
 
-async function login(credentials) {
+function login(credentials) {
   isLoading.value = true;
+
   store
     .dispatch('login', credentials)
     .then(() => {
       isLoading.value = false;
-      window.location = '/';
+      window.location.replace('/profile');
     })
     .catch((err) => {
       isLoading.value = false;
-      loginError.value = err.response.data.message;
-      console.log(err.response.data.message);
+      loginError.value = err.response.data.error;
     });
+
+  // store
+  //   .dispatch('login', credentials)
+  //   .then(() => {
+  //     isLoading.value = false;
+  //   })
+  //   .catch((err) => {
+  //     isLoading.value = false;
+  //     loginError.value = err.response;
+  //     console.log(err.response);
+  //   });
 }
 
 // const login = async (credentials) => {

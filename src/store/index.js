@@ -4,22 +4,27 @@ import axios from 'axios';
 export default createStore({
   state: {
     user: null,
+    token: null,
     loggedIn: false,
     isAdmin: false,
     theme: 'light',
   },
   mutations: {
-    SET_USER_DATA(state, userData) {
-      let twoHour = 2 * 1000 * 60 * 60;
-      // console.log(now + twoHour);
-      userData.experieAt = Date.now() + twoHour;
-      state.user = userData;
+    SET_LOGGIN_DATA(state, data) {
+      state.token = data.access_token;
       state.loggedIn = true;
-      localStorage.setItem('user', JSON.stringify(userData));
-      if (userData.email === 'andiliang9988@gmail.com') {
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${data.access_token}`;
+
+      state.user = data.user;
+      localStorage.setItem('user', JSON.stringify(data));
+
+      if (data.user.is_admin === true) {
         state.isAdmin = true;
       }
     },
+
     CLEAR_USER_DATA() {
       localStorage.removeItem('user');
       location.reload();
@@ -38,12 +43,27 @@ export default createStore({
     },
   },
   actions: {
-    async login({ commit }, credentials) {
-      await axios.get('/sanctum/csrf-cookie');
-      return await axios.post('/login', credentials).then(({ data }) => {
-        commit('SET_USER_DATA', data);
+    login({ commit }, credentials) {
+      return axios.post('/api/login', credentials).then(({ data }) => {
+        commit('SET_LOGGIN_DATA', data);
       });
     },
+
+    // async login({ commit }, credentials) {
+    //   return await axios
+    //     .post('/api/login', credentials)
+    //     .then(({ response }) => {
+    //       commit('SET_USER_DATA', response.data);
+    //     });
+
+    // console.log(reponse.data.access_token);
+
+    // return await axios.get('/api/user').then(({ data }) => {
+    //   console.log(data);
+    //   // commit('SET_USER_DATA', data);
+    // });
+
+    // },
     logout({ commit }) {
       commit('CLEAR_USER_DATA');
     },

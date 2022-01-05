@@ -23,6 +23,14 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('@/views/Register.vue'),
+    meta: { redirectIfLogged: true },
+  },
+
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue'),
+    meta: { auth: true },
   },
 
   {
@@ -30,7 +38,6 @@ const routes = [
     name: 'tracking.create',
     component: () => import('@/views/tracking/create.vue'),
   },
-
 
   {
     path: '/logout',
@@ -119,16 +126,6 @@ router.afterEach((to, from) => {
 router.beforeEach((to, from) => {
   let user = localStorage.getItem('user');
   let loggedIn = user;
-  let isAdmin =
-    user !== null && JSON.parse(user).email === 'andiliang9988@gmail.com';
-
-  if (to.meta.adminOnly && !loggedIn) {
-    return { name: 'login' };
-  }
-
-  if (to.meta.adminOnly && !isAdmin) {
-    return { name: 'home' };
-  }
 
   if (to.meta.auth && !loggedIn) {
     return { name: 'login' };
