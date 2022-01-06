@@ -37,6 +37,7 @@ const routes = [
     path: '/tracking/create',
     name: 'tracking.create',
     component: () => import('@/views/tracking/create.vue'),
+    meta: { auth: true },
   },
 
   {

@@ -1,37 +1,61 @@
 <template>
-    <div class="tw-mb-8 tw-flex">
-        <div class="tw-mr-4">
-            <button class="tw-border tw-border-solid tw-border-grey-dark tw-rounded-full tw-w-6 tw-h-6 tw-flex tw-items-center tw-justify-center tw-text-xs tw-text-grey-dark tw-font-bold tw-leading-none tw-cursor-pointer"
-                  @click="toggle"
-            >
-                <svg v-if="isOpen" xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="tw-fill-current">
-                    <path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/>
-                </svg>
+  <div class="pt-6">
+    <dt class="text-lg">
+      <button
+        @click.prevent="toggle"
+        type="button"
+        class="text-left w-full flex justify-between items-start text-gray-400"
+        aria-controls="faq-0"
+        aria-expanded="false"
+      >
+        <span class="font-medium text-gray-900"> {{ title }} </span>
+        <span class="ml-6 h-7 flex items-center">
+          <!--
+                  Expand/collapse icon, toggle classes based on question open state.
 
-                <svg v-else xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="tw-fill-current">
-                    <path d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"/>
-                </svg>
-            </button>
-        </div>
+                  Heroicon name: outline/chevron-down
 
-        <div class="tw-leading-loose">
-            <h3 v-text="title"
-                class="tw-font-bold tw-text-2xl tw-mb-3 tw-text-black tw-leading-none tw-cursor-pointer"
-                @click="toggle"
-            ></h3>
-
-            <div v-html="body" v-show="isOpen"></div>
-        </div>
-    </div>
+                  Open: "-rotate-180", Closed: "rotate-0"
+                -->
+          <svg
+            class="h-6 w-6 transform"
+            :class="openClass"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </span>
+      </button>
+    </dt>
+    <dd class="mt-2 pr-12" id="faq-0">
+      <p class="text-base text-gray-500" v-show="isOpen">{{ body }}</p>
+    </dd>
+  </div>
 </template>
 
 <script>
 export default {
-    props: ['title', 'body', 'isOpen'],
-    methods: {
-        toggle() {
-            this.$emit('toggled', this.$vnode.key);
-        }
-    }
+  props: ['title', 'body', 'isOpen', 'indexKey'],
+  emits: ['toggled'],
+  methods: {
+    toggle() {
+      this.$emit('toggled', this.indexKey);
+    },
+  },
+
+  computed: {
+    openClass: function () {
+      return this.isOpen ? '-rotate-180' : 'rotate-0';
+    },
+  },
 };
 </script>

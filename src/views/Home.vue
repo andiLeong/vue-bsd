@@ -209,7 +209,7 @@
   </div>
 
   <!-- feature section -->
-  <div class="py-16 bg-gray-50 overflow-hidden lg:py-24">
+  <div class="py-16 bg-gray-50 dark:bg-gray-600 overflow-hidden lg:py-24">
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
       <svg
         class="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -247,11 +247,13 @@
 
       <div class="relative">
         <h2
-          class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+          class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
         >
           A better way to send money
         </h2>
-        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
+        <p
+          class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500 dark:text-gray-50"
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
           magnam voluptatum cupiditate veritatis in, accusamus quisquam.
         </p>
@@ -262,11 +264,11 @@
       >
         <div class="relative">
           <h3
-            class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl"
+            class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl dark:text-gray-100"
           >
             Transfer funds world-wide
           </h3>
-          <p class="mt-3 text-lg text-gray-500">
+          <p class="mt-3 text-lg text-gray-500 dark:text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
             minima sequi recusandae, porro maiores officia assumenda aliquam
             laborum ab aliquid veritatis impedit odit adipisci optio iste
@@ -277,7 +279,7 @@
             <div class="relative">
               <dt>
                 <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white"
                 >
                   <!-- Heroicon name: outline/globe-alt -->
                   <svg
@@ -296,11 +298,13 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                >
                   Competitive exchange rates
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
+              <dd class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-50">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Maiores impedit perferendis suscipit eaque, iste dolor
                 cupiditate blanditiis ratione.
@@ -310,7 +314,7 @@
             <div class="relative">
               <dt>
                 <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white"
                 >
                   <!-- Heroicon name: outline/scale -->
                   <svg
@@ -329,11 +333,13 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-gray-50"
+                >
                   No hidden fees
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
+              <dd class="mt-2 ml-16 text-base text-gray-500 dark:text-white">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Maiores impedit perferendis suscipit eaque, iste dolor
                 cupiditate blanditiis ratione.
@@ -343,7 +349,7 @@
             <div class="relative">
               <dt>
                 <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white"
                 >
                   <!-- Heroicon name: outline/lightning-bolt -->
                   <svg
@@ -362,11 +368,13 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                >
                   Transfers are instant
                 </p>
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
+              <dd class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-50">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Maiores impedit perferendis suscipit eaque, iste dolor
                 cupiditate blanditiis ratione.
@@ -457,11 +465,11 @@
         >
           <div class="lg:col-start-2">
             <h3
-              class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl"
+              class="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight sm:text-3xl"
             >
               Always in the loop
             </h3>
-            <p class="mt-3 text-lg text-gray-500">
+            <p class="mt-3 text-lg text-gray-500 dark:text-gray-50">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
               ex obcaecati natus eligendi delectus, cum deleniti sunt in labore
               nihil quod quibusdam expedita nemo.
@@ -471,7 +479,7 @@
               <div class="relative">
                 <dt>
                   <div
-                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white"
                   >
                     <!-- Heroicon name: outline/annotation -->
                     <svg
@@ -490,11 +498,15 @@
                       />
                     </svg>
                   </div>
-                  <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                  <p
+                    class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                  >
                     Mobile notifications
                   </p>
                 </dt>
-                <dd class="mt-2 ml-16 text-base text-gray-500">
+                <dd
+                  class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-50"
+                >
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Maiores impedit perferendis suscipit eaque, iste dolor
                   cupiditate blanditiis ratione.
@@ -504,7 +516,7 @@
               <div class="relative">
                 <dt>
                   <div
-                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white"
                   >
                     <!-- Heroicon name: outline/mail -->
                     <svg
@@ -523,11 +535,15 @@
                       />
                     </svg>
                   </div>
-                  <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
+                  <p
+                    class="ml-16 text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                  >
                     Reminder emails
                   </p>
                 </dt>
-                <dd class="mt-2 ml-16 text-base text-gray-500">
+                <dd
+                  class="mt-2 ml-16 text-base text-gray-500 dark:text-gray-50"
+                >
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Maiores impedit perferendis suscipit eaque, iste dolor
                   cupiditate blanditiis ratione.

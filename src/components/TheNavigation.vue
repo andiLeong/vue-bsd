@@ -175,7 +175,7 @@ const routes = ref([
 
 const dropdowns = ref([
   { path: '/profile', name: 'Profile' },
-  { path: '/posts/create', name: 'create Tracking' },
+  { path: '/tracking/create', name: 'create Tracking' },
 ]);
 
 const chosenTheme = ref(store.state.theme);
