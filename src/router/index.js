@@ -4,6 +4,15 @@ import Home from '@/views/Home.vue';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
+import { useStore } from 'vuex';
+
+
+import middlewarePipeline from '@/router/middlewarePipeline.js'
+import auth from '@/middleware/auth.js'
+import guest from '@/middleware/guest.js'
+
+const store = useStore();
+
 const routes = [
   { path: '/', name: 'home', component: Home },
   {
@@ -16,28 +25,40 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login.vue'),
-    meta: { redirectIfLogged: true },
+    // meta: { redirectIfLogged: true },
+    meta:{
+      middleware: [guest]
+    }
   },
 
   {
     path: '/register',
     name: 'register',
     component: () => import('@/views/Register.vue'),
-    meta: { redirectIfLogged: true },
+    meta:{
+      middleware: [guest]
+    }
+    // meta: { redirectIfLogged: true },
   },
 
   {
     path: '/profile',
     name: 'profile',
     component: () => import('@/views/Profile.vue'),
-    meta: { auth: true },
+    // meta: { auth: true },
+    meta: { 
+      middleware: [auth] 
+    },
   },
 
   {
     path: '/tracking/create',
     name: 'tracking.create',
     component: () => import('@/views/tracking/create.vue'),
-    meta: { auth: true },
+    // meta: { auth: true },
+    meta: { 
+      middleware: [auth] 
+    },
   },
 
   {
@@ -45,50 +66,6 @@ const routes = [
     name: 'logout',
     component: () => import('@/views/Logout.vue'),
   },
-  // {
-  //   path: '/posts',
-  //   name: 'posts',
-  //   component: () => import('@/views/Posts.vue'),
-  // },
-  // {
-  //   path: '/posts/:slug',
-  //   name: 'posts.show',
-  //   component: () => import('@/views/Post.vue'),
-  //   props: true,
-  // },
-  // {
-  //   path: '/posts/edit/:slug',
-  //   name: 'posts.edit',
-  //   component: () => import('@/views/post/Edit.vue'),
-  //   props: true,
-  //   meta: { adminOnly: true },
-  // },
-  // {
-  //   path: '/posts/create',
-  //   name: 'post.create',
-  //   component: () => import('@/views/post/Create.vue'),
-  //   meta: { adminOnly: true },
-  // },
-  // {
-  //   path: '/form',
-  //   name: 'form',
-  //   component: () => import('@/views/SimpleForm.vue'),
-  // },
-  // {
-  //   path: '/tabs',
-  //   name: 'tabs',
-  //   component: () => import('@/views/Tabs.vue'),
-  // },
-  // {
-  //   path: '/uploader',
-  //   name: 'uploader',
-  //   component: () => import('@/views/Uploader.vue'),
-  // },
-  // {
-  //   path: '/gallery',
-  //   name: 'gallery',
-  //   component: () => import('@/views/Gallery.vue'),
-  // },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
@@ -124,17 +101,42 @@ router.afterEach((to, from) => {
   NProgress.done();
 });
 
-router.beforeEach((to, from) => {
-  let user = localStorage.getItem('user');
-  let loggedIn = user;
+// router.beforeEach((to, from) => {
+//   let user = localStorage.getItem('user');
+//   let loggedIn = user;
 
-  if (to.meta.auth && !loggedIn) {
-    return { name: 'login' };
+//   if (to.meta.auth && !loggedIn) {
+//     return { name: 'login' };
+//   }
+
+//   if (to.meta.redirectIfLogged && loggedIn) {
+//     return { name: 'home' };
+//   }
+// });
+
+
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.middleware) {
+    return next()
   }
 
-  if (to.meta.redirectIfLogged && loggedIn) {
-    return { name: 'home' };
+  const middleware = to.meta.middleware
+
+  const context = {
+    to,
+    from,
+    store,
+    next
   }
-});
+
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1)
+  })
+})
+
+
+
 
 export default router;
