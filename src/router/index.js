@@ -47,7 +47,7 @@ const routes = [
   {
     path: '/tracking/create',
     name: 'tracking.create',
-    component: () => import('@/views/tracking/create.vue'),
+    component: () => import('@/views/tracking/Create.vue'),
     meta: {
       middleware: [auth],
     },
@@ -65,7 +65,7 @@ const routes = [
   {
     path: '/slip/:id/create/',
     name: 'slip.create',
-    component: () => import('@/views/slip/create.vue'),
+    component: () => import('@/views/slip/Create.vue'),
     props: true,
     meta: {
       middleware: [auth],
@@ -75,7 +75,7 @@ const routes = [
   {
     path: '/package/:id/tracking',
     name: 'tracking',
-    component: () => import('@/views/tracking/tracking.vue'),
+    component: () => import('@/views/tracking/Tracking.vue'),
     props: true,
     meta: {
       middleware: [auth],

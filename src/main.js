@@ -9,7 +9,8 @@ import './index.css';
 import store from './store';
 window.axios = axios;
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:8000';
+// axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'http://bsd.andiliang.com';
 
 const app = createApp(App)
   .component('AppLink', AppLink)
