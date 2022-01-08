@@ -16,7 +16,7 @@
         <div class="flex-shrink-0">
           <img
             class="h-10 w-10 rounded-full"
-            src="https://avatars.githubusercontent.com/u/68339288?s=48&v=4"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
             alt=""
           />
         </div>
@@ -74,15 +74,10 @@ function capitalRouteName(value) {
   });
 }
 
-const routes = ref([
-  { name: 'home' },
-  { name: 'posts' },
-  { name: 'gallery' },
-  { name: 'login' },
-]);
+const routes = ref([{ name: 'home' }, { name: 'about' }]);
 
 const dropdowns = ref([
-  { path: '/uploader', name: 'Upload Gallery' },
-  { path: '/posts/create', name: 'Create Post' },
+  { path: '/tracking/create', name: 'Uplaod Tracking' },
+  { path: '/package', name: 'Package' },
 ]);
 </script>

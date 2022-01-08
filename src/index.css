@@ -26,4 +26,12 @@
   .base-label {
     @apply block text-sm font-medium text-gray-700 dark:text-white;
   }
+
+  .table-head {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  .dropdown-item {
+    @apply pl-2 pr-8 leading-loose text-xs block hover:bg-gray-200 transition;
+  }
 }

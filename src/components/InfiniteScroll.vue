@@ -1,11 +1,22 @@
 <template>
-  <div v-for="item in items" :key="item.id">
-    <slot name="item" v-bind:item="item" />
-  </div>
+  <template v-if="!targetElement">
+    <div v-for="item in items" :key="item.id">
+      <slot name="item" v-bind:item="item" />
+    </div>
+  </template>
+
+  <template v-if="targetElement == 'table'">
+    <tr v-for="item in items" :key="item.id">
+      <slot name="item" v-bind:item="item" />
+    </tr>
+  </template>
 
   <slot name="loading" />
 
-  <div v-if="items.length" v-observe-visibility="handleScrolledToBottom"></div>
+  <span
+    v-if="items.length"
+    v-observe-visibility="handleScrolledToBottom"
+  ></span>
 </template>
 
 <script>
@@ -15,6 +26,9 @@ export default {
     items: {
       required: true,
       type: Array,
+    },
+    targetElement: {
+      required: false,
     },
   },
 

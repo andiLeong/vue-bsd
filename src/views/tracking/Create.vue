@@ -1,6 +1,6 @@
 <template>
   <div
-    class="space-y-8 divide-y divide-gray-200 md:px-20 flex justify-center mx-4 md:mx-24"
+    class="space-y-8 divide-y divide-gray-200 md:px-20 flex justify-center mx-4 md:mx-24 my-4"
   >
     <form @submit.prevent="submit" class="space-y-8 w-full">
       <div class="pt-8">
@@ -11,9 +11,12 @@
             Upload Express Tracking Number
           </h3>
 
-          <p v-if="isSuccess" class="text-green-500 italic font-semibold">
+          <Alert v-if="packageNumber">
             Your tracking number had been uploaded
-          </p>
+            <span class="font-extrabold">
+              {{ packageNumber }}
+            </span>
+          </Alert>
 
           <div class="mb-2" v-if="validationErrors">
             <p
@@ -100,9 +103,10 @@
 <script>
 import BaseInput from '@/components/forms/BaseInput.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
+import Alert from '@/components/Alert.vue';
 
 export default {
-  components: { BaseInput, PrimaryButton },
+  components: { BaseInput, PrimaryButton, Alert },
 
   data() {
     return {
@@ -110,6 +114,7 @@ export default {
       isLoading: false,
       isSuccess: false,
       validationErrors: {},
+      packageNumber: '',
     };
   },
 
@@ -137,7 +142,7 @@ export default {
           this.isLoading = false;
 
           this.trackings = [{ number: '', company: '' }];
-
+          this.packageNumber = response.data.number;
           console.log(response);
         })
         .catch((error) => {

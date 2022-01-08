@@ -91,7 +91,7 @@ function login(credentials) {
     .dispatch('login', credentials)
     .then(() => {
       isLoading.value = false;
-      window.location.replace('/profile');
+      window.location.replace('/package');
     })
     .catch((err) => {
       isLoading.value = false;

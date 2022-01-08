@@ -2,16 +2,18 @@
   <!-- stats section -->
   <HomeStats />
   <!-- team member -->
-  <div class="bg-white">
+  <div class="bg-white dark:bg-gray-600">
     <div
       class="max-w-7xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24"
     >
       <div class="space-y-12">
         <div class="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2
+            class="text-3xl font-extrabold tracking-tight sm:text-4xl dark:text-white"
+          >
             Meet our team
           </h2>
-          <p class="text-xl text-gray-500">
+          <p class="text-xl text-gray-500 dark:text-gray-200">
             Ornare sagittis, suspendisse in hendrerit quis. Sed dui aliquet
             lectus sit pretium egestas vel mattis neque.
           </p>
@@ -20,17 +22,19 @@
           role="list"
           class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl"
         >
-          <li>
+          <li v-for="(member, index) in members" :key="index">
             <div class="space-y-6">
               <img
-                class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-                src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                alt=""
+                class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 dark:border dark:border-2 darK:border-white"
+                :src="member.profile"
+                :alt="member.name"
               />
               <div class="space-y-2">
                 <div class="text-lg leading-6 font-medium space-y-1">
-                  <h3>Whitney Francis</h3>
-                  <p class="text-indigo-600">Copywriter</p>
+                  <h3 class="dark:text-white">{{ member.name }}</h3>
+                  <p class="text-indigo-600 dark:text-sky-200">
+                    {{ member.position }}
+                  </p>
                 </div>
                 <ul role="list" class="flex justify-center space-x-5">
                   <li>
@@ -69,19 +73,17 @@
               </div>
             </div>
           </li>
-
-          <!-- More people... -->
         </ul>
       </div>
     </div>
   </div>
 
   <!-- faq -->
-  <div class="bg-gray-50">
+  <div class="bg-gray-100 dark:bg-gray-700">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
         <h2
-          class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl"
+          class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl dark:text-white"
         >
           Frequently asked questions
         </h2>
@@ -91,12 +93,16 @@
       </div>
     </div>
   </div>
+
+  <!-- footer -->
+  <TheFooter />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import HomeStats from '@/components/HomeStats.vue';
 import Accordion from '@/components/Accordion.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 const qa = ref([
   {
@@ -110,6 +116,27 @@ const qa = ref([
   {
     title: 'How much is cheaper than others',
     body: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+  },
+]);
+
+const members = ref([
+  {
+    name: 'Roanld Tan',
+    position: 'CEO',
+    profile:
+      'https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-1/p100x100/72874997_103394827753023_5518677111549722624_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=7206a8&_nc_ohc=zl2uKKl94FgAX-2jeiu&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent-lhr8-1.xx&oh=00_AT8DK0G482oEAzccuGEk0R9ynu9vMdVyHMkx6rBGWReueg&oe=61FDA42B',
+  },
+  {
+    name: 'Arren Lin',
+    position: 'Integration Engineer',
+    profile:
+      'https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-1/p100x100/174068355_4185629151456685_1000980932052326623_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=7206a8&_nc_ohc=iTGLUmXlgJEAX90NOwr&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent-lhr8-1.xx&oh=00_AT_AWYigNhSZudr4g-wd5QMRTxy511supVSk98Nbbq8Ikg&oe=61FE099F',
+  },
+  {
+    name: 'Adrian',
+    position: 'Integration Manager',
+    profile:
+      'https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-1/p100x100/90098096_10157079348335773_7667709829699338240_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=7206a8&_nc_ohc=lkp-74tIfJ0AX8n-Hva&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent-lhr8-1.xx&oh=00_AT94-dwM1AQ6Pnma3k_WR6c3o0u-lgqZsX0I9SgLAVKTpA&oe=61FF2810',
   },
 ]);
 </script>

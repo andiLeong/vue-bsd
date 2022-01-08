@@ -4,14 +4,10 @@ import Home from '@/views/Home.vue';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-import { useStore } from 'vuex';
-
-
-import middlewarePipeline from '@/router/middlewarePipeline.js'
-import auth from '@/middleware/auth.js'
-import guest from '@/middleware/guest.js'
-
-const store = useStore();
+import middlewarePipeline from '@/router/middlewarePipeline.js';
+import auth from '@/middleware/auth.js';
+import guest from '@/middleware/guest.js';
+import store from '@/store';
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -25,29 +21,26 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login.vue'),
-    // meta: { redirectIfLogged: true },
-    meta:{
-      middleware: [guest]
-    }
+    meta: {
+      middleware: [guest],
+    },
   },
 
   {
     path: '/register',
     name: 'register',
     component: () => import('@/views/Register.vue'),
-    meta:{
-      middleware: [guest]
-    }
-    // meta: { redirectIfLogged: true },
+    meta: {
+      middleware: [guest],
+    },
   },
 
   {
     path: '/profile',
     name: 'profile',
     component: () => import('@/views/Profile.vue'),
-    // meta: { auth: true },
-    meta: { 
-      middleware: [auth] 
+    meta: {
+      middleware: [auth],
     },
   },
 
@@ -55,9 +48,37 @@ const routes = [
     path: '/tracking/create',
     name: 'tracking.create',
     component: () => import('@/views/tracking/create.vue'),
-    // meta: { auth: true },
-    meta: { 
-      middleware: [auth] 
+    meta: {
+      middleware: [auth],
+    },
+  },
+
+  {
+    path: '/package',
+    name: 'package.index',
+    component: () => import('@/views/package/package.vue'),
+    meta: {
+      middleware: [auth],
+    },
+  },
+
+  {
+    path: '/slip/:id/create/',
+    name: 'slip.create',
+    component: () => import('@/views/slip/create.vue'),
+    props: true,
+    meta: {
+      middleware: [auth],
+    },
+  },
+
+  {
+    path: '/package/:id/tracking',
+    name: 'tracking',
+    component: () => import('@/views/tracking/tracking.vue'),
+    props: true,
+    meta: {
+      middleware: [auth],
     },
   },
 
@@ -101,42 +122,24 @@ router.afterEach((to, from) => {
   NProgress.done();
 });
 
-// router.beforeEach((to, from) => {
-//   let user = localStorage.getItem('user');
-//   let loggedIn = user;
-
-//   if (to.meta.auth && !loggedIn) {
-//     return { name: 'login' };
-//   }
-
-//   if (to.meta.redirectIfLogged && loggedIn) {
-//     return { name: 'home' };
-//   }
-// });
-
-
-
 router.beforeEach((to, from, next) => {
   if (!to.meta.middleware) {
-    return next()
+    return next();
   }
 
-  const middleware = to.meta.middleware
+  const middleware = to.meta.middleware;
 
   const context = {
     to,
     from,
     store,
-    next
-  }
+    next,
+  };
 
   return middleware[0]({
     ...context,
-    next: middlewarePipeline(context, middleware, 1)
-  })
-})
-
-
-
+    next: middlewarePipeline(context, middleware, 1),
+  });
+});
 
 export default router;
