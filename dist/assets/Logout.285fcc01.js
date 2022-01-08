@@ -1,0 +1,1 @@
+import{K as e}from"./vendor.e8a4f362.js";const s={setup(o){return e(),console.log("hi"),localStorage.removeItem("isLogin"),localStorage.removeItem("user"),window.location.replace("/"),(r,t)=>"logging out"}};export{s as default};

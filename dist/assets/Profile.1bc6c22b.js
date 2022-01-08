@@ -1,0 +1,1 @@
+import{u as e,d as t,o as n}from"./vendor.e8a4f362.js";const u={setup(c){const s=e();return axios.get("/api/user").then(function(o){console.log(o)}).catch(function(o){console.log(o.response.status),o.response.status==401&&s.dispatch("logout"),console.log(o)}),(o,a)=>(n(),t("div",null,"profile section"))}};export{u as default};
