@@ -65,7 +65,7 @@ const routes = [
   {
     path: '/slip/:id/create/',
     name: 'slip.create',
-    component: () => import('@/views/slip/Create.vue'),
+    component: () => import('@/views/Slip/Create.vue'),
     props: true,
     meta: {
       middleware: [auth],
