@@ -1,5 +1,8 @@
 <template>
-  <table class="min-w-full divide-y divide-gray-200" v-if="packages.length > 0">
+  <table
+    class="min-w-full divide-y divide-gray-200 mb-14"
+    v-if="packages.length > 0"
+  >
     <thead class="bg-gray-100">
       <tr>
         <th scope="col" class="table-head">Package Number</th>
