@@ -7,6 +7,11 @@
         <div
           class="dark:bg-gray-700 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10"
         >
+          <Alert v-if="username">
+            hey, successfully regisaterd your user name is
+            <br />
+            <span class="font-bold"> {{ username }} </span>
+          </Alert>
           <form
             @submit.prevent="submit"
             class="space-y-8 divide-y divide-gray-200"
@@ -142,9 +147,12 @@ import { useRouter } from 'vue-router';
 import BaseInput from '@/components/forms/BaseInput.vue';
 import BaseSelect from '@/components/forms/BaseSelect.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
+import Alert from '@/components/Alert.vue';
+import Applink from '@/components/Applink.vue';
 
 const locations = ref(['OT', 'EM', 'WM', 'SG']);
 const options = ref(['air', 'ship']);
+const username = ref('');
 
 const validationSchema = ref(
   object({
@@ -190,9 +198,13 @@ function register(values) {
 
   axios
     .post('api/register', values)
-    .then(() => {
+    .then((response) => {
       isLoading.value = false;
-      router.push('/login');
+
+      username.value = response.data.username;
+      console.log(response.data.username);
+
+      // router.push('/login');
     })
     .catch((err) => {
       isLoading.value = false;
